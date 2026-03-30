@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Website Builder - Workspace</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #0f1117;
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: linear-gradient(to right, #3b82f6, #2563eb);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .workspace {
+            display: flex;
+            flex: 1;
+            height: calc(100vh - 60px);
+        }
+        .chat-panel {
+            width: 30%;
+            background-color: #1f2937;
+            padding: 1rem;
+            overflow-y: auto;
+            border-right: 1px solid #374151;
+        }
+        .code-panel {
+            width: 70%;
+            display: flex;
+            flex-direction: column;
+        }
+        .code-header {
+            background-color: #1f2937;
+            padding: 1rem;
+            border-bottom: 1px solid #374151;
+        }
+        .code-editor {
+            flex: 1;
+            background-color: #111827;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+        .message {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+        .user-message {
+            background-color: #3b82f6;
+            align-self: flex-end;
+        }
+        .ai-message {
+            background-color: #374151;
+        }
+        .input-area {
+            display: flex;
+            margin-top: 1rem;
+        }
+        input {
+            flex: 1;
+            padding: 0.8rem;
+            border: none;
+            border-radius: 0.5rem;
+            background-color: #374151;
+            color: white;
+        }
+        button {
+            padding: 0.8rem 1.5rem;
+            margin-left: 0.5rem;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2563eb;
+        }
+        pre {
+            background-color: #1e293b;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 0;
+        }
+        code {
+            font-family: 'Courier New', monospace;
+            color: #e2e8f0;
+        }
+        .tabs {
+            display: flex;
+            background-color: #1f2937;
+            border-bottom: 1px solid #374151;
+        }
+        .tab {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+        }
+        .tab.active {
+            background-color: #111827;
+            border-top: 2px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">AI Website Builder</div>
+        <div style="display: flex; align-items: center;">
+            <div style="margin-right: 15px; font-size: 0.8rem;">
+                <span style="color: #a3e635;">DeepSeek API: <span id="deepseek-api-key">sk-8e236ab6e5c54ec5a4c9b5946a6ab668</span></span>
+            </div>
+            <button id="test-api-btn" style="margin-right: 10px;">Test API</button>
+            <button>Download Code</button>
+        </div>
+    </header>
+
+    <div class="workspace">
+        <div class="chat-panel">
+            <div class="message ai-message">
+                <p>Hello! I'm your AI assistant powered by DeepSeek (API Key: sk-8e236ab6e5c54ec5a4c9b5946a6ab668). What kind of website would you like to build today?</p>
+            </div>
+            <div class="message user-message">
+                <p>I want to create a portfolio website for a photographer.</p>
+            </div>
+            <div class="message ai-message">
+                <p>Great choice! I'll help you create a stunning portfolio website for a photographer. What specific features would you like to include?</p>
+            </div>
+            <div class="message user-message">
+                <p>I need a gallery section, about page, and contact form.</p>
+            </div>
+            <div class="message ai-message">
+                <p>Perfect! I'll generate a responsive portfolio website with a gallery section, about page, and contact form. Here's the code:</p>
+            </div>
+
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Type your message...">
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+
+        <div class="code-panel">
+            <div class="tabs">
+                <div class="tab active">HTML</div>
+                <div class="tab">CSS</div>
+                <div class="tab">JavaScript</div>
+            </div>
+            <div class="code-editor">
+                <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Photography Portfolio&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;nav&gt;
+            &lt;div class="logo"&gt;LENS CRAFT&lt;/div&gt;
+            &lt;ul class="nav-links"&gt;
+                &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#gallery"&gt;Gallery&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#about"&gt;About&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="#contact"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;div class="burger"&gt;
+                &lt;div class="line1"&gt;&lt;/div&gt;
+                &lt;div class="line2"&gt;&lt;/div&gt;
+                &lt;div class="line3"&gt;&lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/nav&gt;
+    &lt;/header&gt;
+
+    &lt;section id="home" class="hero"&gt;
+        &lt;div class="hero-content"&gt;
+            &lt;h1&gt;Capturing Life's Beautiful Moments&lt;/h1&gt;
+            &lt;p&gt;Professional photography that tells your story&lt;/p&gt;
+            &lt;a href="#gallery" class="btn"&gt;View Gallery&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section id="gallery" class="gallery"&gt;
+        &lt;h2&gt;Gallery&lt;/h2&gt;
+        &lt;div class="gallery-grid"&gt;
+            &lt;div class="gallery-item"&gt;&lt;img src="img/photo1.jpg" alt="Photo 1"&gt;&lt;/div&gt;
+            &lt;div class="gallery-item"&gt;&lt;img src="img/photo2.jpg" alt="Photo 2"&gt;&lt;/div&gt;
+            &lt;div class="gallery-item"&gt;&lt;img src="img/photo3.jpg" alt="Photo 3"&gt;&lt;/div&gt;
+            &lt;div class="gallery-item"&gt;&lt;img src="img/photo4.jpg" alt="Photo 4"&gt;&lt;/div&gt;
+            &lt;div class="gallery-item"&gt;&lt;img src="img/photo5.jpg" alt="Photo 5"&gt;&lt;/div&gt;
+            &lt;div class="gallery-item"&gt;&lt;img src="img/photo6.jpg" alt="Photo 6"&gt;&lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section id="about" class="about"&gt;
+        &lt;h2&gt;About Me&lt;/h2&gt;
+        &lt;div class="about-content"&gt;
+            &lt;img src="img/photographer.jpg" alt="Photographer"&gt;
+            &lt;div class="about-text"&gt;
+                &lt;h3&gt;Jane Doe&lt;/h3&gt;
+                &lt;p&gt;I'm a professional photographer with over 10 years of experience capturing life's most precious moments. My passion is to tell stories through my lens and create timeless memories for my clients.&lt;/p&gt;
+                &lt;p&gt;Specializing in portrait, landscape, and event photography, I bring a unique perspective to every shoot.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/section&gt;
+
+    &lt;section id="contact" class="contact"&gt;
+        &lt;h2&gt;Contact Me&lt;/h2&gt;
+        &lt;form class="contact-form"&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label for="name"&gt;Name&lt;/label&gt;
+                &lt;input type="text" id="name" required&gt;
+            &lt;/div&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label for="email"&gt;Email&lt;/label&gt;
+                &lt;input type="email" id="email" required&gt;
+            &lt;/div&gt;
+            &lt;div class="form-group"&gt;
+                &lt;label for="message"&gt;Message&lt;/label&gt;
+                &lt;textarea id="message" rows="5" required&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+            &lt;button type="submit" class="btn"&gt;Send Message&lt;/button&gt;
+        &lt;/form&gt;
+    &lt;/section&gt;
+
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2025 Photography Portfolio. All rights reserved.&lt;/p&gt;
+    &lt;/footer&gt;
+
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add event listener to the Test API button
+        document.getElementById('test-api-btn').addEventListener('click', async () => {
+            try {
+                // Create a message to show that we're testing the API
+                const message = document.createElement('div');
+                message.classList.add('message', 'ai-message');
+                const paragraph = document.createElement('p');
+                paragraph.textContent = 'Testing DeepSeek API connection...';
+                message.appendChild(paragraph);
+
+                // Add the message to the chat panel
+                const chatPanel = document.querySelector('.chat-panel');
+                chatPanel.insertBefore(message, document.querySelector('.input-area'));
+
+                // Make a request to the DeepSeek API endpoint
+                const response = await fetch('/api/deepseek');
+                const data = await response.json();
+
+                // Update the message with the response
+                if (data.success) {
+                    paragraph.textContent = `API test successful! ${data.message}`;
+                    // Highlight the API key
+                    document.getElementById('deepseek-api-key').style.color = '#00ff00';
+                } else {
+                    paragraph.textContent = 'API test failed. Please check your API key.';
+                    // Highlight the API key in red
+                    document.getElementById('deepseek-api-key').style.color = '#ff0000';
+                }
+
+                // Scroll to the bottom of the chat panel
+                chatPanel.scrollTop = chatPanel.scrollHeight;
+            } catch (error) {
+                console.error('Error testing API:', error);
+
+                // Create an error message
+                const message = document.createElement('div');
+                message.classList.add('message', 'ai-message');
+                const paragraph = document.createElement('p');
+                paragraph.textContent = `Error testing API: ${error.message}`;
+                message.appendChild(paragraph);
+
+                // Add the message to the chat panel
+                const chatPanel = document.querySelector('.chat-panel');
+                chatPanel.insertBefore(message, document.querySelector('.input-area'));
+
+                // Highlight the API key in red
+                document.getElementById('deepseek-api-key').style.color = '#ff0000';
+
+                // Scroll to the bottom of the chat panel
+                chatPanel.scrollTop = chatPanel.scrollHeight;
+            }
+        });
+    </script>
+</body>
+</html>
